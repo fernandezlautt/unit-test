@@ -1,5 +1,5 @@
 import { describe, test, expect } from '@jest/globals';
-import { filtroClienteTipo } from '../src/filtroClientes';
+import filtroClienteTipo from '../src/filtroClientes';
 import { Cliente } from '../src/class/Cliente';
 import { TipoCliente } from '../src/class/TipoCliente';
 
@@ -8,7 +8,7 @@ describe('Filtro de clientes por tipo', () => {
         const tipo1 = new TipoCliente(1, 'Premium');
         const tipo2 = new TipoCliente(2, 'Standard');
         
-        let clientes: Array<Cliente> = Array(
+        const clientes: Array<Cliente> = Array(
             new Cliente('Juan', 20, tipo1),
             new Cliente('Pedro', 30, tipo2),
             new Cliente('Pablo', 40, tipo1)
@@ -17,12 +17,9 @@ describe('Filtro de clientes por tipo', () => {
         
         let flag:boolean = (clientesResultado.length == 0) ? false : true;
 
-        for(let cliente of clientesResultado){
-            if(cliente.tipoCliente.id != tipo1.id){
-                flag = false;
-                break;
-            }
-        }
+        clientesResultado.forEach(cliente => {
+          cliente.tipoCliente.id !== tipo1.id ? flag = false : null;  
+        })
 
         expect(flag).toBe(true);
     
