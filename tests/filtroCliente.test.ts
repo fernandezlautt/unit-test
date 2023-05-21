@@ -1,7 +1,7 @@
 import { describe, test, expect } from '@jest/globals';
 import { filtroClienteTipo } from '../src/filtroClientes';
-import { Cliente } from '../src/Cliente';
-import { TipoCliente } from '../src/TipoCliente';
+import { Cliente } from '../src/class/Cliente';
+import { TipoCliente } from '../src/class/TipoCliente';
 
 describe('Filtro de clientes por tipo', () => {
     test('Deberia devolver todos clientes tipo 1', () => {

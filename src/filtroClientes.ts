@@ -1,13 +1,11 @@
-import { Cliente } from "./Cliente";
-import { TipoCliente } from "./TipoCliente";
+import { Cliente } from "./class/Cliente";
+import { TipoCliente } from "./class/TipoCliente";
 
 function filtroClienteTipo(clientes:Array<Cliente>, tipo:TipoCliente): Array<Cliente> {
-    let clientesResultado:Array<Cliente> = new Array<Cliente>();
-    for(let cliente of clientes){
-        if(cliente.tipoCliente.id == tipo.id){
-            clientesResultado.push(cliente);
-        }
-    }
+    const clientesResultado:Array<Cliente> = new Array<Cliente>();
+    clientes.forEach(cliente => {
+        cliente.tipoCliente.id === tipo.id ? clientesResultado.push(cliente) : null;
+    })
     return clientesResultado;
 }
 
