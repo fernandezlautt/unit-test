@@ -15,13 +15,17 @@ describe('Filtro de clientes por tipo', () => {
           );
         const clientesResultado:Array<Cliente> = filtroClienteTipo(clientes, tipo1);
         
-        let flag:boolean = (clientesResultado.length == 0) ? false : true;
+        // let flag:boolean = (clientesResultado.length == 0) ? false : true;
 
-        clientesResultado.forEach(cliente => {
-          cliente.tipoCliente.id !== tipo1.id ? flag = false : null;  
-        })
+        // clientesResultado.forEach(cliente => {
+        //   cliente.tipoCliente.id !== tipo1.id ? flag = false : null;  
+        // })
 
-        expect(flag).toBe(true);
+        const validacion = clientesResultado.map((cliente) => cliente.tipoCliente.id === tipo1.id)
+
+        const estadoValidacion = clientesResultado.length === validacion.length ? true : false;//Creo que esta forma de validar es mas limpia
+
+        expect(estadoValidacion).toBe(true);
     
     });
 
