@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+      "target": "es6",
+      "module": "commonjs",
+      "esModuleInterop": true,
+      "moduleResolution": "node",
+      "strict": true,
+      "resolveJsonModule": true,
+      "baseUrl": ".",
+      "paths": {
+        "*": ["src/*"]
+      },
+      "types": ["jest", "node"]
+    },
+    "include": ["src/**/*.ts"],
+    "exclude": ["node_modules"]
+  }

@@ -1,5 +1,5 @@
 import { describe, test, expect } from '@jest/globals';
-import { CodigoVerificacion } from '../src/CodigoVerificacion';
+import { CodigoVerificacion } from '../src/utils/CodigoVerificacion';
 
 
 describe('Codigo verificacion', () => {

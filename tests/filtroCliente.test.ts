@@ -1,27 +1,28 @@
 import { describe, test, expect } from '@jest/globals';
-import filtroClienteTipo from '../src/filtroClientes';
-import { Cliente } from '../src/class/Cliente';
-import { TipoCliente } from '../src/class/TipoCliente';
+import filtroClienteTipo from '../src/utils/clientes/filtroClientes';
+import { Cliente } from '../src/data/models/cliente';
+import { TipoCliente } from '../src/data/models/tipoCliente';
 
-describe('Filtro de clientes por tipo', () => {
-    test('Deberia devolver todos clientes tipo 1', () => {
-        const tipo1:TipoCliente = new TipoCliente(1, 'Premium');
-        const tipo2:TipoCliente = new TipoCliente(2, 'Standard');
-        
-        const clientes: Array<Cliente> = [
-            new Cliente('Juan', 20, tipo1),
-            new Cliente('Pedro', 30, tipo2),
-            new Cliente('Pablo', 40, tipo1)
-          ];
-          
-        const clientesResultado:Array<Cliente> = filtroClienteTipo(clientes, tipo1);
-
-        const validacion = clientesResultado.filter((cliente) => cliente.tipoCliente.id === tipo1.id)
-
-        const estadoValidacion = (clientesResultado.length === validacion.length || clientesResultado.length === 0)
-
-        expect(estadoValidacion).toBe(true);
-
+describe("Filtro de clientes por tipo", () => {
+    test("Deberia devolver todos los clientes tipo 1", () => {
+      const tipo1: TipoCliente = { id: 1, nombre: "Premium" };
+      const tipo2: TipoCliente = { id: 2, nombre: "Standard" };
+  
+      const clientes: Cliente[] = [
+        { id:1, nombre: "Juan", edad: 20, tipoCliente: tipo1, numCliente: 1 },
+        { id:2, nombre: "Pedro", edad: 30, tipoCliente: tipo2, numCliente: 2 },
+        { id:3, nombre: "Pablo", edad: 40, tipoCliente: tipo1, numCliente: 3 },
+      ];
+  
+      const clientesResultado: Cliente[] = filtroClienteTipo(clientes, tipo1);
+  
+      const validacion = clientesResultado.filter(
+        (cliente) => cliente.tipoCliente?.id === tipo1.id
+      );
+  
+      const estadoValidacion =
+        clientesResultado.length === validacion.length || clientesResultado.length === 0;
+  
+      expect(estadoValidacion).toBe(true);
     });
-
-});
+  });
