@@ -14,16 +14,16 @@ describe("Filtro de clientes por tipo", () => {
       { id: 3, nombre: "Pablo", edad: 40, tipoCliente: tipo1, numCliente: 3 },
     ];
 
+    const clientesResultadoEsperado: Cliente[] = [clientes[0], clientes[2]];
+
     const clientesResultado: Cliente[] = filtroClienteTipo(clientes, tipo1);
 
-    const validacion = clientesResultado.filter(
-      (cliente) => cliente.tipoCliente?.id === tipo1.id
-    );
 
-    const estadoValidacion =
-      clientesResultado.length === validacion.length ||
-      clientesResultado.length === 0;
-
-    expect(estadoValidacion).toBe(true);
+    
+    expect(clientesResultado.some((c)=>{
+      return clientesResultadoEsperado.some((c2)=>{
+        return c.id == c2.id
+      })
+    })).toBe(true);
   });
 });
